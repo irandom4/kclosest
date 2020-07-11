@@ -13,14 +13,14 @@ class Solution {
         return Math.sqrt(square(x) + square(y));
     }
 
-    // calculate sqaure of a number
+    // calculate square of a number
     private int square(int number) {
         return number * number;
     }
 
     public int[][] kClosest(int[][] points, int K) {
         List<int[]> sortedPoints = Arrays.stream(points) // convert array to stream
-                .sorted((o1, o2) -> { // sort the points according to their distances from the origin
+                .sorted((o1, o2) -> { // sort the points according to their distances from the origin (in ascending order)
                     double d1 = distanceFromOrigin(o1);
                     double d2 = distanceFromOrigin(o2);
                     return Double.compare(d1, d2);
