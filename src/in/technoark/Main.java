@@ -6,28 +6,26 @@ import java.util.stream.Collectors;
 
 class Solution {
 
-    // use pythagorean theorem to calculate distance from origin
     private double distanceFromOrigin(int[] point) {
         int x = point[0];
         int y = point[1];
         return Math.sqrt(square(x) + square(y));
     }
 
-    // calculate square of a number
     private int square(int number) {
         return number * number;
     }
 
     public int[][] kClosest(int[][] points, int K) {
-        List<int[]> sortedPoints = Arrays.stream(points) // convert array to stream
-                .sorted((o1, o2) -> { // sort the points according to their distances from the origin (in ascending order)
+        List<int[]> sortedPoints = Arrays.stream(points) 
+                .sorted((o1, o2) -> {
                     double d1 = distanceFromOrigin(o1);
                     double d2 = distanceFromOrigin(o2);
                     return Double.compare(d1, d2);
                 })
                 .limit(K) // take only K closest out of the sorted points
-                .collect(Collectors.toList()); // collect all points in a List
+                .collect(Collectors.toList()); 
 
-        return sortedPoints.toArray(new int[0][0]); // convert List to array
+        return sortedPoints.toArray(new int[0][0]);
     }
 }
